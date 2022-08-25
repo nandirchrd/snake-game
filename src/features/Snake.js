@@ -29,21 +29,30 @@ export default class Snake {
 		this.pos.x += this.vel.x;
 		this.pos.y += this.vel.y;
 
-		console.log(this.pos.x);
+		this.vel =
+			this.app.control.arrow === 'LEFT' && this.vel.x !== 1
+				? new Vec2(-1, 0)
+				: this.app.control.arrow === 'RIGHT' && this.vel.x !== -1
+				? new Vec2(1, 0)
+				: this.app.control.arrow === 'UP' && this.vel.y !== 1
+				? new Vec2(0, -1)
+				: this.app.control.arrow === 'DOWN' && this.vel.y !== -1
+				? new Vec2(0, 1)
+				: this.vel;
 	}
 	detectCollision() {
 		// CHECK LEFT AND RIGHT WALLS
 		this.pos.x =
-			this.getX() > this.app.cv.clientWidth && this.vel.x > 0
+			this.getX() >= this.app.cv.clientWidth > 0
 				? 1
-				: this.getX() < 0 && this.vel.x < 0
+				: this.getX() < 0
 				? this.app.tileSize
 				: this.pos.x;
 		// CHECK BOTTOM AND TOP WALLS
 		this.pos.y =
-			this.getY() > this.app.cv.clientWidth && this.vel.y > 0
+			this.getY() >= this.app.cv.clientHeight > 0
 				? 1
-				: this.getY() < 0 && this.vel.y < 0
+				: this.getY() < 0
 				? this.app.tileSize
 				: this.pos.y;
 	}

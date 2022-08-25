@@ -1,4 +1,5 @@
 import Snake from './features/Snake.js';
+import Control from './features/Control.js';
 
 let initiate;
 export default class App {
@@ -17,8 +18,10 @@ export default class App {
 		this.tile = this.cv.clientWidth / this.tileSize;
 
 		this.snake = new Snake();
-		this.level = 2;
+		this.level = 8;
 		this.lastTimestamp = 0;
+
+		this.control = new Control();
 
 		console.log('APP');
 
