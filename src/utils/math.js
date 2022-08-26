@@ -4,3 +4,10 @@ export class Vec2 {
 		this.y = y;
 	}
 }
+
+export class RandomVec2 {
+	constructor(tileSize) {
+		this.x = Math.floor(Math.random() * tileSize) + 1;
+		this.y = Math.floor(Math.random() * tileSize) + 1;
+	}
+}

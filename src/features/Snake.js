@@ -1,12 +1,12 @@
 import App from '../App.js';
-import { Vec2 } from '../utils/math.js';
+import { RandomVec2, Vec2 } from '../utils/math.js';
 import Tails from './Tails.js';
 
 export default class Snake {
 	constructor() {
 		this.app = new App();
 		this.tails = new Tails();
-		this.pos = new Vec2(2, 1);
+		this.pos = new RandomVec2(this.app.tileSize);
 		this.vel = new Vec2(0, -1);
 	}
 	draw() {
@@ -17,10 +17,6 @@ export default class Snake {
 			this.app.tile - this.app.padding,
 			this.app.tile - this.app.padding
 		);
-		this.tails.draw();
-
-		this.update();
-		this.detectCollision();
 	}
 	getX() {
 		return (this.pos.x - 1) * this.app.tile;
@@ -29,6 +25,11 @@ export default class Snake {
 		return (this.pos.y - 1) * this.app.tile;
 	}
 	update() {
+		this.draw();
+
+		this.detectCollision();
+		this.tails.draw();
+
 		this.pos.x += this.vel.x;
 		this.pos.y += this.vel.y;
 
@@ -44,6 +45,22 @@ export default class Snake {
 				: this.vel;
 	}
 	detectCollision() {
+		// CHECK IS COLLIDE WITH TAILS
+		this.tails.tails.forEach((tail) => {
+			if (tail.pos.x === this.pos.x && tail.pos.y === this.pos.y) {
+				this.tails.length = 0;
+				this.tails.tails = [];
+			}
+		});
+
+		// IF FOOD AND SNAKE COLLIDE
+		if (
+			this.pos.x === this.app.food.pos.x &&
+			this.pos.y === this.app.food.pos.y
+		) {
+			this.app.food.pos = new RandomVec2(this.app.tileSize);
+			this.app.snake.tails.length++;
+		}
 		// CHECK LEFT AND RIGHT WALLS
 		this.pos.x =
 			this.getX() >= this.app.cv.clientWidth > 0
