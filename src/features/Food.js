@@ -29,13 +29,12 @@ class Food {
 		);
 	}
 	checkCollide = () => {
-		console.log(`${this.app.snake.pos.x} : ${this.app.snake.pos.y}`);
-		console.log(`${this.pos.x} : ${this.pos.y}`);
 		if (
 			this.app.snake.pos.x === this.pos.x &&
 			this.app.snake.pos.y === this.pos.y
 		) {
 			this.pos = this.randomVec2();
+			this.app.snake.tails.length++;
 		}
 	};
 }
