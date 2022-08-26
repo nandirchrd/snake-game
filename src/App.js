@@ -15,6 +15,7 @@ export default class App {
 		this.cv.height = this.cv.clientHeight;
 		this.ctx = this.cv.getContext('2d');
 
+		this.margin = 1;
 		this.tileSize = 10;
 		this.tile = this.cv.clientWidth / this.tileSize;
 

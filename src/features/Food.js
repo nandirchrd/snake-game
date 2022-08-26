@@ -22,10 +22,10 @@ class Food {
 		this.checkCollide();
 		this.app.ctx.fillStyle = 'green';
 		this.app.ctx.fillRect(
-			this.getX(),
-			this.getY(),
-			this.app.tile,
-			this.app.tile
+			this.getX() + this.app.margin * 2,
+			this.getY() + this.app.margin * 2,
+			this.app.tile - this.app.margin * 5,
+			this.app.tile - this.app.margin * 5
 		);
 	}
 	checkCollide = () => {
