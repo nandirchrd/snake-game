@@ -46,6 +46,7 @@ export default class App {
 		this.ctx.fillRect(0, 0, this.cv.clientWidth, this.cv.clientHeight);
 	}
 	draw() {
+		console.log(this.tile);
 		this.food.draw();
 		this.snake.draw();
 	}

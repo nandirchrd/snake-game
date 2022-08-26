@@ -1,9 +1,11 @@
 import App from '../App.js';
 import { Vec2 } from '../utils/math.js';
+import Tails from './Tails.js';
 
 export default class Snake {
 	constructor() {
 		this.app = new App();
+		this.tails = new Tails();
 		this.pos = new Vec2(2, 1);
 		this.vel = new Vec2(0, -1);
 	}
@@ -15,6 +17,7 @@ export default class Snake {
 			this.app.tile,
 			this.app.tile
 		);
+		this.tails.draw();
 
 		this.update();
 		this.detectCollision();
