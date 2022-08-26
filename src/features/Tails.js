@@ -32,10 +32,10 @@ class Tails {
 
 		for (let tail of this.tails) {
 			this.app.ctx.fillRect(
-				tail.getX() + this.app.margin * 2,
-				tail.getY() + this.app.margin * 2,
-				this.app.tile - this.app.margin * 5,
-				this.app.tile - this.app.margin * 5
+				tail.getX() + this.app.padding * 0.5,
+				tail.getY() + this.app.padding * 0.5,
+				this.app.tile - this.app.padding,
+				this.app.tile - this.app.padding
 			);
 		}
 	}

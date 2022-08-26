@@ -15,7 +15,7 @@ export default class App {
 		this.cv.height = this.cv.clientHeight;
 		this.ctx = this.cv.getContext('2d');
 
-		this.margin = 1;
+		this.padding = 5;
 		this.tileSize = 10;
 		this.tile = this.cv.clientWidth / this.tileSize;
 
@@ -55,7 +55,7 @@ export default class App {
 	update = (timestamp) => {
 		requestAnimationFrame(this.update);
 
-		if (timestamp - this.lastTimestamp < 1000 / 1 / this.level) return;
+		if (timestamp - this.lastTimestamp < 1000 / this.level) return;
 		this.lastTimestamp = timestamp;
 
 		this.cleanScreen();

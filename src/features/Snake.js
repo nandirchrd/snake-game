@@ -12,10 +12,10 @@ export default class Snake {
 	draw() {
 		this.app.ctx.fillStyle = 'red';
 		this.app.ctx.fillRect(
-			this.getX() + this.app.margin * 2,
-			this.getY() + this.app.margin * 2,
-			this.app.tile - this.app.margin * 5,
-			this.app.tile - this.app.margin * 5
+			this.getX() + this.app.padding * 0.5,
+			this.getY() + this.app.padding * 0.5,
+			this.app.tile - this.app.padding,
+			this.app.tile - this.app.padding
 		);
 		this.tails.draw();
 
