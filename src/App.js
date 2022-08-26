@@ -1,5 +1,6 @@
 import Snake from './features/Snake.js';
 import Control from './features/Control.js';
+import Food from './features/Food.js';
 
 let initiate;
 export default class App {
@@ -18,6 +19,7 @@ export default class App {
 		this.tile = this.cv.clientWidth / this.tileSize;
 
 		this.snake = new Snake();
+		this.food = new Food();
 		this.level = 8;
 		this.lastTimestamp = 0;
 
@@ -44,6 +46,7 @@ export default class App {
 		this.ctx.fillRect(0, 0, this.cv.clientWidth, this.cv.clientHeight);
 	}
 	draw() {
+		this.food.draw();
 		this.snake.draw();
 	}
 
