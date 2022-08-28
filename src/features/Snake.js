@@ -50,6 +50,16 @@ export default class Snake {
 			if (tail.pos.x === this.pos.x && tail.pos.y === this.pos.y) {
 				this.tails.length = 0;
 				this.tails.tails = [];
+				this.app.score.score = 0;
+
+				this.app.gameOver.pause();
+				this.app.hoohTenan.pause();
+				this.app.gameOver.currentTime = 0;
+				this.app.hoohTenan.currentTime = 0;
+				this.app.gameOver.play();
+				setTimeout(() => {
+					this.app.hoohTenan.play();
+				}, 700);
 			}
 		});
 
@@ -61,6 +71,8 @@ export default class Snake {
 			this.app.eat.pause();
 			this.app.eat.currentTime = 0;
 			this.app.eat.play();
+
+			this.app.score.score++;
 			this.app.food.pos = new RandomVec2(this.app.tileSize);
 			this.app.snake.tails.length++;
 		}
