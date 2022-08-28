@@ -1,9 +1,19 @@
+import App from '../App.js';
 class Control {
 	constructor() {
+		this.app = new App();
 		this.arrow = null;
 		this.lastArrow = null;
 
 		window.addEventListener('keydown', (e) => {
+			if (e.code === 'Space') {
+				if (!this.app.bgMusic.paused) {
+					this.app.bgMusic.pause();
+					return;
+				}
+				this.app.bgMusic.loop = true;
+				this.app.bgMusic.play();
+			}
 			if (
 				e.code === 'ArrowUp' ||
 				e.code === 'ArrowDown' ||

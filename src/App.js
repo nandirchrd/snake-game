@@ -24,6 +24,8 @@ export default class App {
 		this.snake = new Snake();
 		this.food = new Food();
 		this.control = new Control();
+		this.bgMusic = new Audio('./src/assets/music/bg.mp3');
+		this.eat = new Audio('./src/assets/music/eat.mp3');
 
 		window.addEventListener('resize', () => {
 			this.cv.width = this.cv.clientWidth;

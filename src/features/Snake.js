@@ -58,6 +58,9 @@ export default class Snake {
 			this.pos.x === this.app.food.pos.x &&
 			this.pos.y === this.app.food.pos.y
 		) {
+			this.app.eat.pause();
+			this.app.eat.currentTime = 0;
+			this.app.eat.play();
 			this.app.food.pos = new RandomVec2(this.app.tileSize);
 			this.app.snake.tails.length++;
 		}
