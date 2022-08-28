@@ -26,6 +26,8 @@ export default class App {
 		this.control = new Control();
 		this.bgMusic = new Audio('./src/assets/music/bg.mp3');
 		this.eat = new Audio('./src/assets/music/eat.mp3');
+		this.gameOver = new Audio('./src/assets/music/game-over.mp3');
+		this.hoohTenan = new Audio('./src/assets/music/hooh-tenan.mp3');
 
 		window.addEventListener('resize', () => {
 			this.cv.width = this.cv.clientWidth;
@@ -44,7 +46,7 @@ export default class App {
 	}
 
 	update = (timestamp) => {
-		requestAnimationFrame(this.update);
+		this.animate = requestAnimationFrame(this.update);
 
 		if (timestamp - this.lastTimestamp < 1000 / this.level) return;
 		this.lastTimestamp = timestamp;
