@@ -1,6 +1,7 @@
 import Snake from './features/Snake.js';
 import Control from './features/Control.js';
 import Food from './features/Food.js';
+import Score from './features/Score.js';
 
 let initiate;
 export default class App {
@@ -24,6 +25,7 @@ export default class App {
 		this.snake = new Snake();
 		this.food = new Food();
 		this.control = new Control();
+		this.score = new Score();
 		this.bgMusic = new Audio('./src/assets/music/bg.mp3');
 		this.eat = new Audio('./src/assets/music/eat.mp3');
 		this.gameOver = new Audio('./src/assets/music/game-over.mp3');
@@ -54,5 +56,6 @@ export default class App {
 		this.cleanScreen();
 		this.food.update();
 		this.snake.update();
+		this.score.update();
 	};
 }
